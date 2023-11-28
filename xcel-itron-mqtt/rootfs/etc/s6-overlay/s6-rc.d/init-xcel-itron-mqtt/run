@@ -1,0 +1,42 @@
+#!/command/with-contenv bashio
+# shellcheck shell=bash
+# ==============================================================================
+# Home Assistant Community Add-on: Xcel iTron2MQTT
+# Initializes Xcel iTron2MQTT
+# ==============================================================================
+
+bashio::log.info "Initializing Xcel iTron2MQTT" 
+
+# generate the certs if the ldfi is missing
+declare cert_dir
+declare cert_path
+declare key_path
+declare ldfi
+
+cert_dir=$(bashio::config 'cert_dir')
+cert_path="${cert_dir}/$(bashio::config 'cert_file')"
+key_path="${cert_dir}/$(bashio::config 'key_file')"
+
+if ! bashio::fs.directory_exists "${cert_dir}"; then
+  bashio::log.info "Creating cert directory in ${cert_dir}"
+  mkdir -p "${cert_dir}"
+fi
+
+if ! bashio::fs.file_exists "${cert_path}"; then
+  bashio::log.info "Cert and key files missing. Generating..."
+  # generate keys
+  openssl req -x509 -nodes -newkey ec -pkeyopt ec_paramgen_curve:prime256v1 -keyout "${key_path}" -out "${cert_path}" -sha256 -days 1094 -subj '/CN=MeterReaderHanClient' -addext "certificatePolicies = critical,1.3.6.1.4.1.40732.2.2" -addext "keyUsage = critical,digitalSignature" || \
+    bashio::exit.nok 'Failed to generate keys for meter communication'
+fi
+
+if bashio::config.is_empty "ldfi"; then
+  # push LDFI string to config
+  bashio::log.info "LDFI missing. Reading from certs"
+  ldfi=$(openssl x509 -noout -fingerprint -SHA256 -inform pem -in "${cert_path}" | sed -e 's/://g' -e 's/SHA256 Fingerprint=//g' | cut -c1-40)
+  bashio::log.info "LDFI: ${ldfi}"
+  bashio::addon.option "ldfi" "${ldfi}"
+fi
+
+# need meter_ip and meter_port
+bashio::config.require 'meter_ip' 
+bashio::config.require 'meter_port' 
