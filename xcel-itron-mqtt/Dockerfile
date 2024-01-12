@@ -11,10 +11,10 @@ RUN curl -L https://codeload.github.com/zaknye/xcel_itron2mqtt/zip/refs/heads/ma
     rm /opt/xcel_itron2mqtt/run.sh && \ 
     sed -i 's/pyyaml==6.0/pyyaml==6.0.1/g' /opt/xcel_itron2mqtt/requirements.txt && \
     rm -rf /tmp/xcel_itron2mqtt-main/ /tmp/main.zip && \
+    apk del libssl3 libcrypto3 && apk add --no-cache openssl && \
     pip3 install --no-cache-dir \
       --prefer-binary \
-      -r /opt/xcel_itron2mqtt/requirements.txt && \
-    apk add --no-cache openssl
+      -r /opt/xcel_itron2mqtt/requirements.txt
 
 # Copy root filesystem
 COPY rootfs /
