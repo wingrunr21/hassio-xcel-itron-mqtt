@@ -22,3 +22,7 @@ This project provides a bridge between Xcel Energy iTron Riva Gen 5 smart meters
 
 - Using built-in MQTT discovery right now. Need to add config options to allow an external MQTT broker to be used (if that broker is configured in HASS will it be auto-exposed too?)
 - Integrate something to track TOU rates and expose those
+
+## Building Locally
+
+Check the current version of `hassio-addons/addon-base-python` currently being used in [`build.yaml`](https://github.com/wingrunr21/hassio-xcel-itron-mqtt/blob/main/xcel-itron-mqtt/build.yaml). You can then `cd` to the `xcel-itron-mqtt` directory and run the following to build the container locally: `docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:<base-python-version-here>" -t local/hassio-xcel-itron-mqtt .`
