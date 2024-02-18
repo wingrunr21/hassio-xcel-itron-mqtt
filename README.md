@@ -4,10 +4,13 @@ This project provides a bridge between Xcel Energy iTron Riva Gen 5 smart meters
 
 ## Enroll in Xcel Energy Launchpad
 
-1. Go [here](https://co.my.xcelenergy.com/s/forms/sdk-access) and fill out that form to get access to the SDK. You should get an email/invite from Github to join the org once you are enrollled. This could take a few days.
-2. Go to [Meters and Devices](https://my.xcelenergy.com/MyAccount/s/meters-and-devices/manage-meters-and-devices) in your Xcel account to enroll in Launchpad on your account. This allows you to enroll your smart meter in the program. This could take a few days.
-3. Once your meter is enrolled, use the above page to "Manage" your enrollment. You should see your meter labeled as "Ready to Go"
-4. Use the "Edit" button to add your wifi credentials to the meter. I have found this to be somewhat finicky. You'll want to use your router to verify whether the meter is on your network.
+1. Go to [Meters and Devices](https://my.xcelenergy.com/MyAccount/s/meters-and-devices/manage-meters-and-devices) in your Xcel account to enroll in Launchpad on your account. This allows you to enroll your smart meter in the program. This could take a few days.
+2. Once your meter is enrolled, use the above page to "Manage" your enrollment. You should see your meter labeled as "Ready to Go"
+3. Use the "Edit" button to add your wifi credentials to the meter. I have found this to be somewhat finicky. You'll want to use your router to verify whether the meter is on your network.
+4. Use your router to give your meter a static IP address on your network (using something like a DHCP reservation)
+
+### Optionally
+1. Go [here](https://co.my.xcelenergy.com/s/forms/sdk-access) and fill out that form to get access to the SDK. You should get an email/invite from Github to join the org once you are enrollled. This could take a few days. These repos contain example code from Xcel regarding communicating with the meter.
 
 ## Setup
 
