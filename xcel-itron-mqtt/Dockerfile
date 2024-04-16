@@ -8,9 +8,8 @@ ARG XCEL_ITRON2MQTT_SHA=c9e8e361b730e678b7a61a70640b307a6da06056
 
 # Copy python source from upstream
 RUN curl -L https://github.com/zaknye/xcel_itron2mqtt/archive/${XCEL_ITRON2MQTT_SHA}.zip -o /tmp/main.zip && \
-  mkdir -p /tmp/xcel_itron2mqtt/ && \
-  unzip /tmp/main.zip -j -d /tmp/xcel_itron2mqtt && \
-  mv /tmp/xcel_itron2mqtt /opt && \
+  cd /tmp && unzip /tmp/main.zip && \
+  mv /tmp/xcel_itron2mqtt-${XCEL_ITRON2MQTT_SHA}/xcel_itron2mqtt /opt && \
   rm /opt/xcel_itron2mqtt/run.sh && \ 
   rm -rf /tmp/main.zip && \
   apk del libssl3 libcrypto3 && apk add --no-cache openssl && \
