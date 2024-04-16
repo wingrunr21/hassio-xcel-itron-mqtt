@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1
+
+- Fix Dockerfile to maintain upstream directory structure
+
 ## 1.2.0
 
 - Update [zaknye/xcel_itron2mqtt](https://github.com/zaknye/xcel_itron2mqtt) to address missing `touTier` from [zaknye/xcel_itron2mqtt#25](https://github.com/zaknye/xcel_itron2mqtt/pull/25)
