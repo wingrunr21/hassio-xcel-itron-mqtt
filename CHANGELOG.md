@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1.1-local
+
+- Point to thor0215 xcel_itron2mqtt repository
+
 ## 1.2.1
 
 - Fix Dockerfile to maintain upstream directory structure
