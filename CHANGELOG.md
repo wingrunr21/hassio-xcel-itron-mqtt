@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1.2-local
+
+- Adjusted repository to properly point at thor0215
+
 ## 1.2.1.1-local
 
 - Point to thor0215 xcel_itron2mqtt repository
