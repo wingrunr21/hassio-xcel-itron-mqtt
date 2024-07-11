@@ -7,10 +7,10 @@
 bashio::log.info "Starting Xcel iTron2MQTT"
 
 # https://github.com/zaknye/xcel_itron2mqtt/tree/main#options
-export MQTT_SERVER=$(bashio::services mqtt "host")
-export MQTT_USER=$(bashio::services mqtt "username")
-export MQTT_PASSWORD=$(bashio::services mqtt "password")
-export MQTT_PORT=$(bashio::services mqtt "port")
+export MQTT_SERVER=$(bashio::config mqtt "host")
+export MQTT_USER=$(bashio::config mqtt "username")
+export MQTT_PASSWORD=$(bashio::config mqtt "password")
+export MQTT_PORT=$(bashio::config mqtt "port")
 export METER_IP=$(bashio::config 'meter_ip')
 export METER_PORT=$(bashio::config 'meter_port')
 
