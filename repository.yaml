@@ -1,3 +1,3 @@
-name: Home Assistant addons supporting Xcel iTron smart meters
-url: https://github.com/wingrunr21/hassio-xcel-itron-mqtt
-maintainer: Stafford Brunk <wingrunr21@gmail.com>
+name: Home Assistant addons supporting Xcel iTron smart meters - FORK
+url: https://github.com/adamksmith/hassio-xcel-itron-mqtt.git
+maintainer: Adam Smith <me@adamksmith.xyz>
