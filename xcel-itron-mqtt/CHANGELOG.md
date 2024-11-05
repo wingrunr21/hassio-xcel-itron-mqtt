@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2
+
+- vendor OpenSSL config to try and get OpenSSL to cooperate with the meter again
+
 ## 1.3.1
 
 - Lots of documentation updates
