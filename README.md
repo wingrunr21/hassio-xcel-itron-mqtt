@@ -13,23 +13,22 @@ This project provides a bridge between Xcel Energy iTron Riva Gen 5 smart meters
 1. Go [here](https://co.my.xcelenergy.com/s/forms/sdk-access) and fill out that form to get access to the SDK. You should get an email/invite from Github to join the org once you are enrollled. This could take a few days. These repos contain example code from Xcel regarding communicating with the meter.
 
 ## Prerequisites
-1. Add HASS MQTT integration by clicking the "Add Intregration to My HASS" button found in the [corresponding integration documentation](https://www.home-assistant.io/integrations/mqtt).
-2. Install Xcel Itron MQTT and [Mosquito broker](https://github.com/home-assistant/addons/tree/master/mosquitto) from the `Add-On Store` at the bottom right of the `Settings` -> `Add-ons` window.
-   -  Make sure to read the [this section of documentation](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md#how-to-use) to properly setup Mosquito broker.
+- You must have the [MQTT integration](https://www.home-assistant.io/integrations/mqtt/) installed and configured in Home Assistant before this addon will work. MQTT information is loaded into this addon via the Home Assistant Supervisor
+  - You can use an external broker other than the Mosquitto addon by configuring the MQTT integration
 
 ## Setup
 
 1. Add this repository to Home Assistant as a source for third-party addons. See the [Home Assistant documentation](https://www.home-assistant.io/common-tasks/os#installing-third-party-add-ons) if you have questions on how to do that.
-2. Certificates and LDFI are generated for you automatically on first start. The certs are placed into the [`addon_configs`](https://developers.home-assistant.io/docs/add-ons/configuration/#add-on-advanced-options) directory which is parallel to your Home Assistant configuration directory. You will need to SSH into our HASS instance to see this as the VSCode addon defaults to using your config directory as its project root.
+2. Install Xcel Itron MQTT from the `Add-On Store` at the bottom right of the `Settings` -> `Add-ons` window.
+3. Certificates and LDFI are generated for you automatically on first start. The certs are placed into the [`addon_configs`](https://developers.home-assistant.io/docs/add-ons/configuration/#add-on-advanced-options) directory which is parallel to your Home Assistant configuration directory. You will need to SSH into your HASS instance to see this as the VSCode addon defaults to using your config directory as its project root.
 
    - The addon will also populate an `ldfi` configuration option by reading the `ldfi` from the cert/key in that directory. This is for your information only. Changing this setting will not change your `ldfi` as that is calculated from the certificates themselves.
-3. Take the generated LDFI over to the [Meters and Devices](https://my.xcelenergy.com/MyAccount/s/meters-and-devices/manage-meters-and-devices) and add a new device. Fill out the form with your LDFI and wait for Xcel to send you an email that a new device was successfully added.
-4. Restart the addon and you should hopefully see a new device show up under Home Assistant's MQTT integration
-5. Head over to the Energy dashboard and choose the right devices for Home Assistant to use for its electrical tracking.
+4. Take the generated LDFI over to the [Meters and Devices](https://my.xcelenergy.com/MyAccount/s/meters-and-devices/manage-meters-and-devices) and add a new device. Fill out the form with your LDFI and wait for Xcel to send you an email that a new device was successfully added.
+5. Restart the addon and you should hopefully see a new device show up under Home Assistant's MQTT integration
+6. Head over to the Energy dashboard and choose the right devices for Home Assistant to use for its electrical tracking.
 
 ## Future
 
-- Using built-in MQTT discovery right now. Need to add config options to allow an external MQTT broker to be used (if that broker is configured in HASS will it be auto-exposed too?)
 - Integrate something to track TOU rates and expose those
 
 ## Building Locally
