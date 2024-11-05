@@ -12,7 +12,6 @@ RUN curl -L https://github.com/zaknye/xcel_itron2mqtt/archive/${XCEL_ITRON2MQTT_
   mv /tmp/xcel_itron2mqtt-${XCEL_ITRON2MQTT_SHA}/xcel_itron2mqtt /opt && \
   rm /opt/xcel_itron2mqtt/run.sh && \ 
   rm -rf /tmp/main.zip && \
-  echo "CipherString = DEFAULT@SECLEVEL=0" >> /opt/xcel_itron2mqtt/openssl.conf \
   apk del libssl3 libcrypto3 && apk add --no-cache openssl && \
   pip3 install --no-cache-dir \
   --prefer-binary \
@@ -20,6 +19,7 @@ RUN curl -L https://github.com/zaknye/xcel_itron2mqtt/archive/${XCEL_ITRON2MQTT_
 
 # Copy root filesystem
 COPY rootfs /
+COPY support/openssl.conf /opt/xcel_itron2mqtt/openssl.conf
 
 # Build arguments
 ARG BUILD_ARCH
