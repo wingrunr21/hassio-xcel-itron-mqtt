@@ -27,7 +27,7 @@ This project provides a bridge between Xcel Energy iTron Riva Gen 5 smart meters
    - The addon will also populate an `ldfi` configuration option by reading the `ldfi` from the cert/key in that directory. This is for your information only. Changing this setting will not change your `ldfi` as that is calculated from the certificates themselves.
 4. Take the generated LDFI over to the [Meters and Devices](https://my.xcelenergy.com/MyAccount/s/meters-and-devices/manage-meters-and-devices) and add a new device. Fill out the form with your LDFI and wait for Xcel to send you an email that a new device was successfully added.
 5. Restart the addon and you should hopefully see a new device show up under Home Assistant's MQTT integration
-6. Head over to the Energy dashboard and choose the right devices for Home Assistant to use for its electrical tracking.
+6. Head over to the [Energy dashboard config](https://my.home-assistant.io/redirect/config_energy/) and choose the right devices for Home Assistant to use for its electrical tracking. See [DOCS.md](xcel-itron-mqtt/DOCS.md) or the documentation tab in the addon for more details
 
 ## Future
 
