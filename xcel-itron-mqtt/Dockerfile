@@ -1,4 +1,4 @@
-ARG BUILD_FROM
+ARG BUILD_FROM="ghcr.io/hassio-addons/base-python:15.0.1"
 FROM $BUILD_FROM
 
 # Set shell
