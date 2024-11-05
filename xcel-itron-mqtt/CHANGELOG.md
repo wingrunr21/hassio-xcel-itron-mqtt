@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.1
+
+- Lots of documentation updates
+- Fix OpenSSL config to allow unsafe ciphers again
+
 ## 1.3.0
 
 - Update [zaknye/xcel_itron2mqtt](https://github.com/zaknye/xcel_itron2mqtt) to change `timePeriod_duration` to `duration` device class (via [#12](https://github.com/wingrunr21/hassio-xcel-itron-mqtt/pull/12))
