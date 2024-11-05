@@ -1,4 +1,4 @@
-ARG BUILD_FROM="ghcr.io/hassio-addons/base-python:15.0.1"
+ARG BUILD_FROM="ghcr.io/hassio-addons/base-python:13.1.3"
 FROM $BUILD_FROM
 
 # Set shell
@@ -19,7 +19,6 @@ RUN curl -L https://github.com/zaknye/xcel_itron2mqtt/archive/${XCEL_ITRON2MQTT_
 
 # Copy root filesystem
 COPY rootfs /
-COPY support/openssl.conf /opt/xcel_itron2mqtt/openssl.conf
 
 # Build arguments
 ARG BUILD_ARCH

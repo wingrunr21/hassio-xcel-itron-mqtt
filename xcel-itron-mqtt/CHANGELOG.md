@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0
+
+- Downgrade [hassio-addons/base-python](https://github.com/hassio-addons/addon-base-python) to 13.1.3 to address OpenSSL issue
+
 ## 1.3.2
 
 - vendor OpenSSL config to try and get OpenSSL to cooperate with the meter again
