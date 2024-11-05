@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.3.0
+
+- Update  to change `timePeriod_duration` to `duration` device class (via [#12](https://github.com/wingrunr21/hassio-xcel-itron-mqtt/pull/12))
+- Add default `BUILD_FROM` argument to `Dockerfile`
+- Bump [hassio-addons/base-python](https://github.com/hassio-addons/addon-base-python) to 15.0.1
+
 ## 1.2.1
 
 - Fix Dockerfile to maintain upstream directory structure
