@@ -1,5 +1,7 @@
 # Home Assistant Addon for Xcel iTron Riva Gen 5 smart meters -> MQTT
 
+[![Open your Home Assistant instance and add the hassio-xcel-itron-mqtt repository to the Addons Store.](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fwingrunr21%2Fhassio-xcel-itron-mqtt)
+
 This project provides a bridge between Xcel Energy iTron Riva Gen 5 smart meters and Home Assistant. It uses [zaknye/xcel_itron2mqtt](https://github.com/zaknye/xcel_itron2mqtt) for this functionalitiy but wraps it into a Home Assistant addon.
 
 ## Enroll in Xcel Energy Launchpad
@@ -14,12 +16,12 @@ This project provides a bridge between Xcel Energy iTron Riva Gen 5 smart meters
 
 ## Prerequisites
 - You must have the [MQTT integration](https://www.home-assistant.io/integrations/mqtt/) installed and configured in Home Assistant before this addon will work. MQTT information is loaded into this addon via the Home Assistant Supervisor
-  - You can use an external broker other than the Mosquitto addon by configuring the MQTT integration
+  - You can use an external broker other than the Mosquitto addon by configuring the MQTT integration with that broker's details
 
 ## Setup
 
-1. Add this repository to Home Assistant as a source for third-party addons. See the [Home Assistant documentation](https://www.home-assistant.io/common-tasks/os#installing-third-party-add-ons) if you have questions on how to do that.
-2. Install Xcel Itron MQTT from the `Add-On Store` at the bottom right of the `Settings` -> `Add-ons` window.
+1. Add this repository to Home Assistant as a source for third-party addons ([click here](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2Fwingrunr21%2Fhassio-xcel-itron-mqtt) or use the button at the top of the README). See the [Home Assistant documentation](https://www.home-assistant.io/common-tasks/os#installing-third-party-add-ons) if you have questions.
+2. Install Xcel Itron MQTT from the [`Add-On Store`](https://my.home-assistant.io/redirect/supervisor_store/) at the bottom right of the `Settings` -> `Add-ons` window.
 3. Certificates and LDFI are generated for you automatically on first start. The certs are placed into the [`addon_configs`](https://developers.home-assistant.io/docs/add-ons/configuration/#add-on-advanced-options) directory which is parallel to your Home Assistant configuration directory. You will need to SSH into your HASS instance to see this as the VSCode addon defaults to using your config directory as its project root.
 
    - The addon will also populate an `ldfi` configuration option by reading the `ldfi` from the cert/key in that directory. This is for your information only. Changing this setting will not change your `ldfi` as that is calculated from the certificates themselves.
