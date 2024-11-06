@@ -22,5 +22,9 @@ export KEY_PATH=${CERT_DIR}/$(bashio::config 'key_file')
 # Use openssl.conf to enable unsafe cert usage
 export OPENSSL_CONF=/opt/xcel_itron2mqtt/openssl.conf
 
+# Log information
+bashio::log.info "Meter config: ${METER_IP}:${METER_PORT}"
+bashio::log.info "MQTT server config: ${MQTT_SERVER}:${MQTT_PORT}"
+
 cd /opt/xcel_itron2mqtt || return
 exec python3 -Wignore main.py
