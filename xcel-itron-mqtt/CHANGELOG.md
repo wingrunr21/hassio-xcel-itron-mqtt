@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.1
+
+- Add log output for MQTT and Meter configuration prior to running
+
 ## 1.4.0
 
 - Downgrade [hassio-addons/base-python](https://github.com/hassio-addons/addon-base-python) to 13.1.3 to address OpenSSL issue
