@@ -1,3 +1,21 @@
+## Addon Configuration
+
+### Setting the MQTT configuration will override the Mosquitto broker's automatic service discovery
+
+| Option              | Description                                                                 | Required | Default Value    |
+| ------------------- | --------------------------------------------------------------------------- | -------- | ---------------- |
+| `meter_ip`          | The IP address of your meter                                                | Yes      |                  |
+| `meter_port`        | The port of your meter                                                      | Yes      | 8081             |
+| `cert_dir`          | The directory to store the certificate and key                              | Yes      | `/config/certs`  |
+| `cert_file`         | The name of the certificate file                                            | Yes      | `cert.pem`       |
+| `key_file`          | The name of the key file                                                    | Yes      | `key.pem`        |
+| `mqtt`              | MQTT server configuration. Takes precedence over the Mosquitto broker addon | No       |
+| `mqtt.server`       | MQTT server address                                                         | No       |
+| `mqtt.port`         | Port of the MQTT server                                                     | No       | 1883             |
+| `mqtt.user`         | Username for the MQTT server                                                | No       |                  |
+| `mqtt.password`     | Password for the MQTT server                                                | No       |                  |
+| `mqtt.topic_prefix` | The prefix for the MQTT topics                                              | No       | `homeassistant/` |
+
 ## Configuring Energy Dashboard
 
 [![Open your Home Assistant instance and show your energy configuration panel.](https://my.home-assistant.io/badges/config_energy.svg)](https://my.home-assistant.io/redirect/config_energy/)

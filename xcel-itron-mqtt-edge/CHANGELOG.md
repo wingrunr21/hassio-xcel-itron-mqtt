@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.0
+
+- Add manual MQTT configuration to the addon
+- Add translations for the configuration screen
+
 ## 1.4.1
 
 - Add log output for MQTT and Meter configuration prior to running

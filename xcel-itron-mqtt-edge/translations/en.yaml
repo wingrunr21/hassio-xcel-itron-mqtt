@@ -1,0 +1,27 @@
+---
+configuration:
+  meter_ip:
+    name: Meter IP
+    description: The IP address of your meter
+  meter_port:
+    name: Meter Port
+    description: The port of your meter (default 8081)
+  cert_dir:
+    name: Certificate Directory
+    description: The directory to store the certificate and key (default /config/certs)
+  cert_file:
+    name: Certificate File
+    description: The name of the certificate file (default cert.pem)
+  key_file:
+    name: Key File
+    description: The name of the key file (default key.pem)
+  mqtt:
+    name: MQTT Server
+    description: >-
+      MQTT server configuration (do not configure this if you are using the Mosquitto broker addon). Only server is required.
+      Valid options are:
+      server: The MQTT server address
+      port: The port of the MQTT server
+      user: The username for the MQTT server
+      password: The password for the MQTT server
+      topic_prefix: The prefix for the MQTT topics

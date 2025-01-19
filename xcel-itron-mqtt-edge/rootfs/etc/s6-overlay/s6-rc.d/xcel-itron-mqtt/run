@@ -7,18 +7,44 @@
 bashio::log.info "Starting Xcel iTron2MQTT"
 
 # https://github.com/zaknye/xcel_itron2mqtt/tree/main#options
-export MQTT_SERVER=$(bashio::services mqtt "host")
-export MQTT_USER=$(bashio::services mqtt "username")
-export MQTT_PASSWORD=$(bashio::services mqtt "password")
-export MQTT_PORT=$(bashio::services mqtt "port")
-export METER_IP=$(bashio::config 'meter_ip')
-export METER_PORT=$(bashio::config 'meter_port')
+if bashio::config.has_value 'mqtt'; then  
+    MQTT_SERVER=$(bashio::config 'mqtt.server')
+    MQTT_USER=$(bashio::config 'mqtt.user')
+    MQTT_PASSWORD=$(bashio::config 'mqtt.password')
+    if bashio::config.has_value 'mqtt.port'; then
+        MQTT_PORT=$(bashio::config 'mqtt.port', 1883)
+    fi
+    if bashio::config.has_value 'mqtt.topic_prefix'; then
+        MQTT_TOPIC_PREFIX=$(bashio::config 'mqtt.topic_prefix')
+    fi
+else # Use HA Supervisor service API to get MQTT config
+    MQTT_SERVER=$(bashio::services mqtt "host")
+    MQTT_USER=$(bashio::services mqtt "username")
+    MQTT_PASSWORD=$(bashio::services mqtt "password")
+    MQTT_PORT=$(bashio::services mqtt "port")
+fi
+METER_IP=$(bashio::config 'meter_ip')
+METER_PORT=$(bashio::config 'meter_port')
 
 # Persistent Storage
-export CERT_DIR=$(bashio::config 'cert_dir')
-export CERT_PATH=${CERT_DIR}/$(bashio::config 'cert_file')
-export KEY_PATH=${CERT_DIR}/$(bashio::config 'key_file')
+CERT_DIR=$(bashio::config 'cert_dir')
+CERT_PATH=${CERT_DIR}/$(bashio::config 'cert_file')
+KEY_PATH=${CERT_DIR}/$(bashio::config 'key_file')
 
+# Export variables
+export MQTT_SERVER
+export MQTT_USER
+export MQTT_PASSWORD
+if [[ $(bashio::var.has_value "$MQTT_PORT") ]]; then
+    export MQTT_PORT
+fi
+if [[ $(bashio::var.has_value "$MQTT_TOPIC_PREFIX") ]]; then
+    export MQTT_TOPIC_PREFIX
+fi
+export METER_IP
+export METER_PORT
+export CERT_PATH
+export KEY_PATH
 # Use openssl.conf to enable unsafe cert usage
 export OPENSSL_CONF=/opt/xcel_itron2mqtt/openssl.conf
 
