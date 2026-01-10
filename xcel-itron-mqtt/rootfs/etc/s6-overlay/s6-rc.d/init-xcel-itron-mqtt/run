@@ -17,6 +17,15 @@ cert_dir=$(bashio::config 'cert_dir')
 cert_path="${cert_dir}/$(bashio::config 'cert_file')"
 key_path="${cert_dir}/$(bashio::config 'key_file')"
 
+# Migrate old 'ldfi' config to 'lfdi'
+if bashio::config.has_value 'ldfi' && bashio::config.is_empty 'lfdi'; then
+  bashio::log.info "Migrating 'ldfi' config to 'lfdi'"
+  old_ldfi=$(bashio::config 'ldfi')
+  bashio::addon.option "lfdi" "${old_ldfi}"
+  bashio::addon.option "ldfi"
+  bashio::log.info "Migration complete. Old 'ldfi' config removed."
+fi
+
 if ! bashio::fs.directory_exists "${cert_dir}"; then
   bashio::log.info "Creating cert directory in ${cert_dir}"
   mkdir -p "${cert_dir}"
