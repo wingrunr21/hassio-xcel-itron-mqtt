@@ -4,15 +4,14 @@ FROM $BUILD_FROM
 # Set shell
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-ARG XCEL_ITRON2MQTT_SHA=776f4aec5a21bf814d6cbe2477f6d6a4152ac084
+ARG XCEL_ITRON2MQTT_SHA=d7c2bfd53b2b6debff5821e86cca81f7b3323504
 
 # Copy python source from upstream
 RUN curl -L https://github.com/zaknye/xcel_itron2mqtt/archive/${XCEL_ITRON2MQTT_SHA}.zip -o /tmp/main.zip && \
   cd /tmp && unzip /tmp/main.zip && \
   mv /tmp/xcel_itron2mqtt-${XCEL_ITRON2MQTT_SHA}/xcel_itron2mqtt /opt && \
-  rm /opt/xcel_itron2mqtt/run.sh && \ 
+  rm /opt/xcel_itron2mqtt/run.sh && \
   rm -rf /tmp/main.zip && \
-  apk del libssl3 libcrypto3 && apk add --no-cache openssl && \
   pip3 install --no-cache-dir \
   --prefer-binary \
   -r /opt/xcel_itron2mqtt/requirements.txt
