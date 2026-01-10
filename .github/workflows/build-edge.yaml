@@ -23,13 +23,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Generate version tag with timestamp
-        id: version
-        run: |
-          VERSION=$(grep '^version:' xcel-itron-mqtt-edge/config.yaml | cut -d'"' -f2)
-          TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
-          echo "tag=${VERSION}-${TIMESTAMP}" >> $GITHUB_OUTPUT
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -44,8 +37,5 @@ jobs:
             --target xcel-itron-mqtt-edge \
             --amd64 \
             --aarch64 \
-            --no-latest \
             --docker-hub ${{ github.repository_owner }} \
-            --version ${{ steps.version.outputs.tag }} \
-            --additional-tag edge \
             --cosign
