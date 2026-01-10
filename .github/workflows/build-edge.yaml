@@ -45,7 +45,7 @@ jobs:
             --amd64 \
             --aarch64 \
             --no-latest \
-            --docker-hub ghcr.io/${{ github.repository_owner }} \
+            --docker-hub ${{ github.repository_owner }} \
             --version ${{ steps.version.outputs.tag }} \
             --additional-tag edge \
             --cosign
