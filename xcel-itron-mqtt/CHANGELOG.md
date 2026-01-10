@@ -2,6 +2,7 @@
 
 ## 1.5.0
 
+- Drop deprecated architectures of [i386, armhf, and armv7](https://www.home-assistant.io/blog/2025/05/22/deprecating-core-and-supervised-installation-methods-and-32-bit-systems/)
 - Add manual MQTT configuration to the addon
 - Add translations for the configuration screen
 
