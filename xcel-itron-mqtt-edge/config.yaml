@@ -9,7 +9,7 @@ arch:
   - armhf
   - armv7
   - i386
-image: ghcr.io/wingrunr21/hassio-xcel-itron-mqtt/xcel-itron-mqtt:edge
+image: ghcr.io/wingrunr21/image-{arch}-xcel-itron-mqtt:edge
 init: false
 services:
   - mqtt:need
