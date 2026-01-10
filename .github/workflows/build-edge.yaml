@@ -1,0 +1,51 @@
+name: Build Edge Addon
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "xcel-itron-mqtt-edge/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    steps:
+      - name: Install Cosign
+        uses: sigstore/cosign-installer@v4.0.0
+        with:
+          cosign-release: "v3.0.4"
+
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Generate version tag with timestamp
+        id: version
+        run: |
+          VERSION=$(grep '^version:' xcel-itron-mqtt-edge/config.yaml | cut -d'"' -f2)
+          TIMESTAMP=$(date -u +'%Y%m%d-%H%M%S')
+          echo "tag=${VERSION}-${TIMESTAMP}" >> $GITHUB_OUTPUT
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push addon
+        uses: home-assistant/builder@2025.11.0
+        with:
+          args: |
+            --target xcel-itron-mqtt-edge \
+            --amd64 \
+            --aarch64 \
+            --no-latest \
+            --docker-hub ghcr.io/${{ github.repository_owner }} \
+            --version ${{ steps.version.outputs.tag }} \
+            --additional-tag edge \
+            --cosign
