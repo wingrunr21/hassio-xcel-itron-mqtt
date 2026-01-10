@@ -1,0 +1,41 @@
+name: Manage Releases
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "xcel-itron-mqtt/CHANGELOG.md"
+      - "xcel-itron-mqtt/config.yaml"
+
+permissions:
+  contents: write
+
+jobs:
+  update_stable_draft:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.modified, 'xcel-itron-mqtt/')
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Extract version and changelog
+        id: extract
+        run: |
+          VERSION=$(grep '^version:' xcel-itron-mqtt/config.yaml | cut -d'"' -f2)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+          # Extract the latest changelog entry (first section after the title)
+          CHANGELOG=$(awk '/^## [0-9]/ {if (p) exit; p=1; next} p' xcel-itron-mqtt/CHANGELOG.md)
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGELOG" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Update or create draft release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.extract.outputs.version }}
+          name: v${{ steps.extract.outputs.version }}
+          body: ${{ steps.extract.outputs.changelog }}
+          draft: true
+          prerelease: false
