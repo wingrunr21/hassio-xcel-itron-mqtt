@@ -7,7 +7,7 @@
 bashio::log.info "Starting Xcel iTron2MQTT"
 
 # https://github.com/zaknye/xcel_itron2mqtt/tree/main#options
-if bashio::config.has_value 'mqtt'; then  
+if bashio::config.has_value 'mqtt'; then
     MQTT_SERVER=$(bashio::config 'mqtt.server')
     MQTT_USER=$(bashio::config 'mqtt.user')
     MQTT_PASSWORD=$(bashio::config 'mqtt.password')
@@ -35,10 +35,10 @@ KEY_PATH=${CERT_DIR}/$(bashio::config 'key_file')
 export MQTT_SERVER
 export MQTT_USER
 export MQTT_PASSWORD
-if bashio::var.has_value "$MQTT_PORT"; then
+if bashio::var.defined "MQTT_PORT" && bashio::var.has_value "$MQTT_PORT"; then
     export MQTT_PORT
 fi
-if bashio::var.has_value "$MQTT_TOPIC_PREFIX"; then
+if bashio::var.defined "MQTT_TOPIC_PREFIX" && bashio::var.has_value "$MQTT_TOPIC_PREFIX"; then
     export MQTT_TOPIC_PREFIX
 fi
 export METER_IP

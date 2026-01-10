@@ -35,10 +35,10 @@ KEY_PATH=${CERT_DIR}/$(bashio::config 'key_file')
 export MQTT_SERVER
 export MQTT_USER
 export MQTT_PASSWORD
-if bashio::var.has_value "$MQTT_PORT"; then
+if bashio::var.defined "MQTT_PORT" && bashio::var.has_value "$MQTT_PORT"; then
     export MQTT_PORT
 fi
-if bashio::var.has_value "$MQTT_TOPIC_PREFIX"; then
+if bashio::var.defined "MQTT_TOPIC_PREFIX" && bashio::var.has_value "$MQTT_TOPIC_PREFIX"; then
     export MQTT_TOPIC_PREFIX
 fi
 export METER_IP
