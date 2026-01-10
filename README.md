@@ -35,4 +35,4 @@ This project provides a bridge between Xcel Energy iTron Riva Gen 5 smart meters
 
 ## Building Locally
 
-Check the current version of `hassio-addons/addon-base-python` currently being used in [`build.yaml`](https://github.com/wingrunr21/hassio-xcel-itron-mqtt/blob/main/xcel-itron-mqtt/build.yaml). You can then `cd` to the `xcel-itron-mqtt` directory and run the following to build the container locally: `docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:<base-python-version-here>" -t local/hassio-xcel-itron-mqtt .`
+You can use the `scripts/build-local.sh` utility to build to a local Docker image.
