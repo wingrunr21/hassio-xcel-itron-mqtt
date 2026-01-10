@@ -6,6 +6,10 @@
   - This update includes OpenSSL and Python 3.14 support as well as supporting `Instantaneous Demand`, introduced in HA 2025.12.0
 - Bump [hassio-addons/base-python](https://github.com/hassio-addons/addon-base-python) to 18.0.0
 
+## 1.5.1
+
+- Check if a variable is defined with bashio before running the has_value check. Resolves [#35](https://github.com/wingrunr21/hassio-xcel-itron-mqtt/issues/35)
+
 ## 1.5.0
 
 - Drop deprecated architectures of [i386, armhf, and armv7](https://www.home-assistant.io/blog/2025/05/22/deprecating-core-and-supervised-installation-methods-and-32-bit-systems/)
