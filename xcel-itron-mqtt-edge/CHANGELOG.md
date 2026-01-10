@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.6.0
+
+- Bump [hassio-addons/base-python](https://github.com/hassio-addons/addon-base-python) to 18.0.0
+
 ## 1.5.0
 
 - Add manual MQTT configuration to the addon
