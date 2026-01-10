@@ -21,10 +21,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Extract version from tag
-        id: version
-        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -46,7 +42,3 @@ jobs:
       - name: Publish release
         if: success()
         uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.version.outputs.version }}
-          draft: false
-          prerelease: false
