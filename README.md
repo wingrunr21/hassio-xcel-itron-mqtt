@@ -15,8 +15,10 @@ This project provides a bridge between Xcel Energy iTron Riva Gen 5 smart meters
 1. Go [here](https://co.my.xcelenergy.com/s/forms/sdk-access) and fill out that form to get access to the SDK. You should get an email/invite from Github to join the org once you are enrollled. This could take a few days. These repos contain example code from Xcel regarding communicating with the meter.
 
 ## Prerequisites
-- You must have the [MQTT integration](https://www.home-assistant.io/integrations/mqtt/) installed and configured in Home Assistant before this addon will work. MQTT information is loaded into this addon via the Home Assistant Supervisor
-  - You can use an external broker other than the Mosquitto addon by configuring the MQTT integration with that broker's details
+
+You need an MQTT broker set up. You can either:
+  - Have the [MQTT integration](https://www.home-assistant.io/integrations/mqtt/) installed and configured in Home Assistant. MQTT information is loaded into this addon via the Home Assistant Supervisor API
+  - Use an external broker other than the Mosquitto addon by configuring the [MQTT settings](https://github.com/wingrunr21/hassio-xcel-itron-mqtt/blob/main/xcel-itron-mqtt/DOCS.md#addon-configuration) with that broker's details
 
 ## Setup
 
