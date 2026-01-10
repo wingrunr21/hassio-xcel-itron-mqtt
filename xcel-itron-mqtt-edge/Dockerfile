@@ -12,6 +12,7 @@ RUN curl -L https://github.com/zaknye/xcel_itron2mqtt/archive/${XCEL_ITRON2MQTT_
   mv /tmp/xcel_itron2mqtt-${XCEL_ITRON2MQTT_SHA}/xcel_itron2mqtt /opt && \
   rm /opt/xcel_itron2mqtt/run.sh && \
   rm -rf /tmp/main.zip && \
+  apk add --no-cache openssl && \
   pip3 install --no-cache-dir \
   --prefer-binary \
   -r /opt/xcel_itron2mqtt/requirements.txt
