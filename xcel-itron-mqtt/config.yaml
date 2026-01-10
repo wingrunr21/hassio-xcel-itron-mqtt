@@ -1,8 +1,8 @@
-name: "Xcel iTron MQTT"
-description: "Bridge from Xcel iTron smart meters to MQTT"
+name: "Xcel iTron MQTT - edge"
+description: "Bridge from Xcel iTron smart meters to MQTT - edge version"
 url: "https://www.github.com/wingrunr21/hassio-xcel-itron-mqtt"
-version: "1.4.1"
-slug: "xcel-itron-mqtt"
+version: "1.5.0"
+slug: "xcel-itron-mqtt-edge"
 arch:
   - aarch64
   - amd64
@@ -21,6 +21,7 @@ options:
   cert_dir: /config/certs
   cert_file: cert.pem
   key_file: key.pem
+  mqtt: {}
 schema:
   meter_ip: str
   meter_port: port
@@ -28,3 +29,9 @@ schema:
   cert_dir: str?
   cert_file: str?
   key_file: str?
+  mqtt:
+    server: str?
+    port: port?
+    user: str?
+    password: password?
+    topic_prefix: str?
