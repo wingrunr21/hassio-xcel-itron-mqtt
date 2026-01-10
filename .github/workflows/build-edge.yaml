@@ -37,5 +37,5 @@ jobs:
             --target xcel-itron-mqtt-edge \
             --amd64 \
             --aarch64 \
-            --docker-hub ${{ github.repository_owner }} \
+            --docker-hub ghcr.io/${{ github.repository_owner }} \
             --cosign
