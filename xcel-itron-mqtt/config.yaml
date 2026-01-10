@@ -1,8 +1,8 @@
-name: "Xcel iTron MQTT - edge"
-description: "Bridge from Xcel iTron smart meters to MQTT - edge version"
+name: "Xcel iTron MQTT"
+description: "Bridge from Xcel iTron smart meters to MQTT"
 url: "https://www.github.com/wingrunr21/hassio-xcel-itron-mqtt"
 version: "1.5.0"
-slug: "xcel-itron-mqtt-edge"
+slug: "xcel-itron-mqtt"
 arch:
   - aarch64
   - amd64
