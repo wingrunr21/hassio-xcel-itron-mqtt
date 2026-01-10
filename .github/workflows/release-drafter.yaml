@@ -14,7 +14,6 @@ permissions:
 jobs:
   update_stable_draft:
     runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.modified, 'xcel-itron-mqtt/')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v5
