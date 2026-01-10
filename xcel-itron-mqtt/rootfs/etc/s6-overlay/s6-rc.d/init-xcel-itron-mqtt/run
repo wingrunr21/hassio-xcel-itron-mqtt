@@ -5,13 +5,13 @@
 # Initializes Xcel iTron2MQTT
 # ==============================================================================
 
-bashio::log.info "Initializing Xcel iTron2MQTT" 
+bashio::log.info "Initializing Xcel iTron2MQTT"
 
-# generate the certs if the ldfi is missing
+# generate the certs if the lfdi is missing
 declare cert_dir
 declare cert_path
 declare key_path
-declare ldfi
+declare lfdi
 
 cert_dir=$(bashio::config 'cert_dir')
 cert_path="${cert_dir}/$(bashio::config 'cert_file')"
@@ -29,14 +29,14 @@ if ! bashio::fs.file_exists "${cert_path}"; then
     bashio::exit.nok 'Failed to generate keys for meter communication'
 fi
 
-if bashio::config.is_empty "ldfi"; then
-  # push LDFI string to config
-  bashio::log.info "LDFI missing. Reading from certs"
-  ldfi=$(openssl x509 -noout -fingerprint -SHA256 -inform pem -in "${cert_path}" | sed -e 's/://g' -e 's/SHA256 Fingerprint=//g' | cut -c1-40)
-  bashio::log.info "LDFI: ${ldfi}"
-  bashio::addon.option "ldfi" "${ldfi}"
+if bashio::config.is_empty "lfdi"; then
+  # push LFDI string to config
+  bashio::log.info "LFDI missing. Reading from certs"
+  lfdi=$(openssl x509 -noout -fingerprint -SHA256 -inform pem -in "${cert_path}" | sed -e 's/://g' -e 's/SHA256 Fingerprint=//g' | cut -c1-40)
+  bashio::log.info "LFDI: ${lfdi}"
+  bashio::addon.option "lfdi" "${lfdi}"
 fi
 
 # need meter_ip and meter_port
-bashio::config.require 'meter_ip' 
-bashio::config.require 'meter_port' 
+bashio::config.require 'meter_ip'
+bashio::config.require 'meter_port'

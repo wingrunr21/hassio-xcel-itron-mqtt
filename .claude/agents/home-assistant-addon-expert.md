@@ -27,7 +27,7 @@ Each addon follows Home Assistant addon conventions:
 - `rootfs/etc/s6-overlay/s6-rc.d/` - S6 overlay service definitions
 
 ### Key Components
-- **Init Service** (`init-xcel-itron-mqtt`): Generates SSL certificates and calculates LDFI (Local Device Functional Identifier) on first run
+- **Init Service** (`init-xcel-itron-mqtt`): Generates SSL certificates and calculates LFDI (Local Device Functional Identifier) on first run
 - **Main Service** (`xcel-itron-mqtt`): Runs the Python bridge connecting meter to MQTT
 - **Certificate Management**: Auto-generates required certificates in `/config/certs` using OpenSSL
 - **MQTT Integration**: Uses Home Assistant's built-in MQTT service discovery
@@ -85,7 +85,7 @@ docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:13.1.3" -
 - `meter_ip`: Required - iTron meter IP address
 - `meter_port`: Default 8081 - iTron meter port
 - `cert_dir`: Certificate storage location (default `/config/certs`)
-- `ldfi`: Auto-calculated from certificates
+- `lfdi`: Auto-calculated from certificates
 
 ### Build Config (`build.yaml`)
 - Specifies Home Assistant base Python image versions
@@ -95,7 +95,7 @@ docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:13.1.3" -
 
 ### Certificate Generation
 - Uses EC P-256 curve certificates required by IEEE 2030.5
-- LDFI calculated as first 40 characters of SHA-256 fingerprint
+- LFDI calculated as first 40 characters of SHA-256 fingerprint
 - Certificates stored in Home Assistant addon_configs directory
 
 ### Shell Scripts

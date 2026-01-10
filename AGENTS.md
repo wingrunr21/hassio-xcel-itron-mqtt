@@ -58,7 +58,7 @@ scripts/                 # Build and maintenance utilities
 **Service Structure** (S6 overlay in `rootfs/etc/s6-overlay/s6-rc.d/`):
 - **init-xcel-itron-mqtt**: One-time initialization service
   - Generates SSL certificates using OpenSSL
-  - Calculates LDFI (Local Device Functional Identifier) from certificate
+  - Calculates LFDI (Local Device Functional Identifier) from certificate
   - Runs before main service starts
 - **xcel-itron-mqtt**: Main application service
   - Runs Python bridge connecting meter to MQTT
@@ -75,7 +75,7 @@ scripts/                 # Build and maintenance utilities
 
 - **Algorithm**: EC P-256 curve (required by IEEE 2030.5 standard)
 - **Storage**: `/config/certs` directory (persisted in Home Assistant addon_configs)
-- **LDFI Calculation**: First 40 characters of certificate SHA-256 fingerprint
+- **LFDI Calculation**: First 40 characters of certificate SHA-256 fingerprint
 - **Auto-generation**: Init service creates certificates on first run if missing
 
 ### Configuration Schema
@@ -84,7 +84,7 @@ scripts/                 # Build and maintenance utilities
 - `meter_ip`: Required - iTron meter IP address
 - `meter_port`: Default 8081 - iTron meter communication port
 - `cert_dir`: Certificate storage location (default `/config/certs`)
-- `ldfi`: Auto-calculated from certificates (read-only)
+- `lfdi`: Auto-calculated from certificates (read-only)
 
 **Build configuration** (`build.yaml`):
 - Base image: Home Assistant base-python image
@@ -247,7 +247,7 @@ act push -W .github/workflows/build-release.yaml -n \
 - Verification: Check addon logs for connection establishment
 
 **Certificate problems**:
-- Symptoms: LDFI errors, authentication failures
+- Symptoms: LFDI errors, authentication failures
 - Solution: Delete `/config/certs` directory and restart addon
 - Prevention: Ensure certificate generation completes in init service
 

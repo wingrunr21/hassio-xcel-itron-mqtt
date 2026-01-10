@@ -23,7 +23,7 @@ options:
 schema:
   meter_ip: str
   meter_port: port
-  ldfi: str?
+  lfdi: str?
   cert_dir: str?
   cert_file: str?
   key_file: str?
