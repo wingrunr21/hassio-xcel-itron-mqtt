@@ -45,8 +45,6 @@ export METER_IP
 export METER_PORT
 export CERT_PATH
 export KEY_PATH
-# Use openssl.conf to enable unsafe cert usage
-export OPENSSL_CONF=/opt/xcel_itron2mqtt/openssl.conf
 
 # Log information
 bashio::log.info "Meter config: ${METER_IP}:${METER_PORT}"

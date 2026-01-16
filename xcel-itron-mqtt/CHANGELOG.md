@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.0
+
+- Update [zaknye/xcel_itron2mqtt](https://github.com/zaknye/xcel_itron2mqtt) to [v1.1.0](https://github.com/zaknye/xcel_itron2mqtt/releases/tag/v1.1.0)
+  - This update includes OpenSSL and Python 3.14 support as well as supporting `Instantaneous Demand`, introduced in HA 2025.12.0
+- Bump [hassio-addons/base-python](https://github.com/hassio-addons/addon-base-python) to 18.0.0
+
 ## 1.5.1
 
 - Check if a variable is defined with bashio before running the has_value check. Resolves [#35](https://github.com/wingrunr21/hassio-xcel-itron-mqtt/issues/35)
