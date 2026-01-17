@@ -19,6 +19,7 @@ options:
   cert_dir: /config/certs
   cert_file: cert.pem
   key_file: key.pem
+  loglevel:
   mqtt: {}
 schema:
   meter_ip: str
@@ -27,6 +28,7 @@ schema:
   cert_dir: str?
   cert_file: str?
   key_file: str?
+  loglevel: list(DEBUG|INFO|WARNING|ERROR|CRITICAL)?
   mqtt:
     server: str?
     port: port?

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.0
+
+- Add optional `loglevel` configuration option to control upstream logging verbosity
+
 ## 1.6.0
 
 - Update [zaknye/xcel_itron2mqtt](https://github.com/zaknye/xcel_itron2mqtt) to [v1.1.0](https://github.com/zaknye/xcel_itron2mqtt/releases/tag/v1.1.0)
