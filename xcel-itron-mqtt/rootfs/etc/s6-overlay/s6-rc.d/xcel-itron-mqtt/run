@@ -45,6 +45,9 @@ export METER_IP
 export METER_PORT
 export CERT_PATH
 export KEY_PATH
+if bashio::config.has_value 'loglevel'; then
+    export LOGLEVEL=$(bashio::config 'loglevel')
+fi
 
 # Log information
 bashio::log.info "Meter config: ${METER_IP}:${METER_PORT}"
