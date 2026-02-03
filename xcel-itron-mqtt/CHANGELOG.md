@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.7.1
+
+- Fix OpenSSL install conflicting with libcrypto3 and libssl3
+
 ## 1.7.0
 
 - Add optional `loglevel` configuration option to control upstream logging verbosity
