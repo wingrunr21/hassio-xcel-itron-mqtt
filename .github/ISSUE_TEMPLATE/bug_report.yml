@@ -1,0 +1,86 @@
+name: Bug report
+description: Report a problem with the add-on (startup, certs, MQTT, or no data)
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a report.
+
+        **Please keep it short and specific.** A few precise sentences plus the relevant log
+        lines are far more useful than a long write-up. Reports that are mostly boilerplate,
+        duplicated sections, or unedited AI output may be closed and asked to be resubmitted.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you start
+      options:
+        - label: I searched existing issues (including closed ones) and this is not a duplicate.
+          required: true
+        - label: I am running the latest version of the add-on.
+          required: true
+        - label: I removed secrets from anything I paste (meter IP, LFDI, certs, MQTT credentials).
+          required: true
+        - label: I wrote this report concisely in my own words and removed unnecessary filler.
+          required: true
+
+  - type: textarea
+    id: summary
+    attributes:
+      label: What's wrong?
+      description: Describe the problem in 1-3 sentences. What did you expect, and what happened instead?
+      placeholder: The add-on starts and connects to MQTT, but no meter data is published.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: channel
+    attributes:
+      label: Add-on
+      options:
+        - Xcel iTron MQTT (stable)
+        - Xcel iTron MQTT - edge
+    validations:
+      required: true
+
+  - type: input
+    id: addon_version
+    attributes:
+      label: Add-on version
+      placeholder: "1.7.1"
+    validations:
+      required: true
+
+  - type: input
+    id: firmware
+    attributes:
+      label: Meter firmware version
+      description: Shown by Xcel / on the meter. Leave blank if unknown.
+      placeholder: "3.2.50"
+
+  - type: dropdown
+    id: install_type
+    attributes:
+      label: Home Assistant installation
+      description: Add-ons require the Supervisor (Home Assistant OS or Supervised).
+      options:
+        - Home Assistant OS
+        - Home Assistant Supervised
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant add-on log output
+      description: Paste only the relevant lines from the add-on log (set log level to DEBUG if needed). Secrets redacted.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Anything else?
+      description: Optional. Only add details that are directly relevant.
