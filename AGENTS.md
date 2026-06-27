@@ -31,12 +31,13 @@ scripts/                 # Build and maintenance utilities
    - Use `#!/command/with-contenv bashio` shebang for integration with Home Assistant
    - Leverage bashio library for all logging and configuration access
    - Follow shellcheck standards (pre-configured in devcontainer)
-3. **Certificate Security**: EC P-256 curve certificates are required by IEEE 2030.5 - do not change certificate generation algorithm
+3. **Certificate Security**: EC P-256 curve certificates are required by IEEE 2030.5 - do not change certificate generation algorithm. Generate certs in the `init-xcel-itron-mqtt` service, not upstream's `scripts/generate_keys.sh` — the addon supports configurable `cert_file`/`key_file` names and writes the computed LFDI back to the addon config via `bashio::addon.option`, neither of which the upstream script does
 4. **Version Synchronization**: When updating base images or dependencies, update both stable and edge versions unless explicitly instructed otherwise
 5. **Upstream Dependency Management**:
    - Python code comes from upstream GitHub via commit SHA
    - Update `XCEL_ITRON2MQTT_SHA` in Dockerfile to change versions
    - Always remove upstream `run.sh` and use S6 overlay service scripts instead
+   - Install dependencies with `uv sync --frozen --no-dev --no-install-project` from the upstream `pyproject.toml` + `uv.lock`. The Dockerfile copies a pinned `uv` binary via `COPY --from=ghcr.io/astral-sh/uv:<version>` and must copy `pyproject.toml` and `uv.lock` out of the upstream archive into `/opt/xcel_itron2mqtt`. Put the resulting `.venv/bin` on `PATH` so the S6 service's `python3 main.py` runs from the uv-managed virtualenv.
 
 ### Testing Requirements
 
@@ -88,7 +89,7 @@ scripts/                 # Build and maintenance utilities
 
 **Build configuration** (`build.yaml`):
 - Base image: Home Assistant base-python image
-- Architectures: aarch64, amd64, armv7, armhf, i386
+- Architectures: aarch64, amd64
 
 ## Common Development Tasks
 
@@ -110,12 +111,12 @@ scripts/                 # Build and maintenance utilities
 ```bash
 # Stable addon (check build.yaml for current base image version)
 cd xcel-itron-mqtt
-docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:13.1.3" \
+docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:18.0.0" \
   -t local/hassio-xcel-itron-mqtt .
 
 # Edge addon
 cd xcel-itron-mqtt-edge
-docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:13.1.3" \
+docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:18.0.0" \
   -t local/hassio-xcel-itron-mqtt-edge .
 ```
 
@@ -155,8 +156,9 @@ docker build --build-arg BUILD_FROM="ghcr.io/hassio-addons/base-python:13.1.3" \
 
 1. Find desired commit SHA from [zaknye/xcel_itron2mqtt](https://github.com/zaknye/xcel_itron2mqtt)
 2. Update `XCEL_ITRON2MQTT_SHA` variable in both Dockerfiles
-3. Rebuild and test both addon versions
-4. Verify meter connectivity and data publishing
+3. Confirm the Dockerfile still copies `pyproject.toml` and `uv.lock` from the upstream archive so `uv sync` installs the dependencies
+4. Rebuild and test both addon versions
+5. Verify meter connectivity and data publishing
 
 ### Development Environment
 
