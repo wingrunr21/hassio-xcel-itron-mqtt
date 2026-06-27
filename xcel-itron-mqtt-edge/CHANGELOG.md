@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.8.0
+
+- Update [zaknye/xcel_itron2mqtt](https://github.com/zaknye/xcel_itron2mqtt) to [v1.2.0](https://github.com/zaknye/xcel_itron2mqtt/releases/tag/v1.2.0)
+  - Adds support for Itron firmware 3.2.50 and new sensors: VAh/VARh Received/Delivered, TOU 0-3 WH, Max Demand, and Power Factor (overall and per-phase)
+- Install upstream Python dependencies with [uv](https://github.com/astral-sh/uv) from its lockfile, matching upstream's pip -> uv migration for reproducible builds
+- Extend generated TLS client cert validity from 3 to 20 years
+
 ## 1.7.1
 
 - Fix OpenSSL install conflicting with libcrypto3 and libssl3
