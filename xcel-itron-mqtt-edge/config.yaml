@@ -1,5 +1,5 @@
 name: "Xcel iTron MQTT - edge"
-description: "Bridge from Xcel iTron smart meters to MQTT - edge version"
+description: "Bridge from Xcel iTron smart meters to MQTT — edge channel: pre-release builds from the latest commits, for testing (use the stable add-on for everyday use)"
 url: "https://www.github.com/wingrunr21/hassio-xcel-itron-mqtt"
 version: "1.8.0"
 slug: "xcel-itron-mqtt-edge"
