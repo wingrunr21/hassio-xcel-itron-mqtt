@@ -1,0 +1,35 @@
+name: Feature request / upstream update
+description: Request a change, or ask to package a newer xcel_itron2mqtt version
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Please keep it short and specific.** State what you want and why in a few sentences.
+        Requests that are mostly boilerplate or unedited AI output may be closed and asked to
+        be resubmitted. You do not need to research or explain the implementation for us.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you start
+      options:
+        - label: I searched existing issues (including closed ones) and this is not a duplicate.
+          required: true
+        - label: I wrote this request concisely in my own words.
+          required: true
+
+  - type: textarea
+    id: request
+    attributes:
+      label: What would you like, and why?
+      description: One or two sentences. For an upstream update, link the release or version you want.
+      placeholder: Please package xcel_itron2mqtt v1.2.0 — it adds support for my meter's firmware.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Optional. Only add what's directly relevant (e.g. a link).
