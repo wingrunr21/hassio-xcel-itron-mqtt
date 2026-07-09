@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.0
+
+- Add optional `device_name` configuration option, exported to the upstream bridge as the `DEVICE_NAME` environment variable. It sets the Home Assistant device name and the prefix used for every entity `unique_id` and MQTT topic, so multiple meters can run against a single Home Assistant instance without colliding. Leaving it unset preserves the existing `Xcel Itron 5` naming. Requires an upstream build that supports `DEVICE_NAME`.
+
 ## 1.7.1
 
 - Fix OpenSSL install conflicting with libcrypto3 and libssl3

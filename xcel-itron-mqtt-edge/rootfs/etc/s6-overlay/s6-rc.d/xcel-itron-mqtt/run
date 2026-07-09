@@ -48,6 +48,11 @@ export KEY_PATH
 if bashio::config.has_value 'loglevel'; then
     export LOGLEVEL=$(bashio::config 'loglevel')
 fi
+# Distinct name per meter so multiple add-on instances don't collide in HA.
+# Only takes effect on upstream builds that support DEVICE_NAME; harmless otherwise.
+if bashio::config.has_value 'device_name'; then
+    export DEVICE_NAME=$(bashio::config 'device_name')
+fi
 
 # Log information
 bashio::log.info "Meter config: ${METER_IP}:${METER_PORT}"
