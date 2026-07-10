@@ -9,12 +9,29 @@
 | `cert_dir`          | The directory to store the certificate and key                              | Yes      | `/config/certs`  |
 | `cert_file`         | The name of the certificate file                                            | Yes      | `cert.pem`       |
 | `key_file`          | The name of the key file                                                    | Yes      | `key.pem`        |
+| `device_name`       | Name of the HA device and prefix for every entity `unique_id`/topic. Set a distinct value per meter to run more than one instance (see below) | No | `Xcel Itron 5` |
 | `mqtt`              | MQTT server configuration. Takes precedence over the Mosquitto broker addon | No       |
 | `mqtt.server`       | MQTT server address                                                         | No       |
 | `mqtt.port`         | Port of the MQTT server                                                     | No       | 1883             |
 | `mqtt.user`         | Username for the MQTT server                                                | No       |                  |
 | `mqtt.password`     | Password for the MQTT server                                                | No       |                  |
 | `mqtt.topic_prefix` | The prefix for the MQTT topics                                              | No       | `homeassistant/` |
+
+## Running more than one meter
+
+Home Assistant only allows one instance of an add-on per repository, so a second
+meter needs a second add-on with a different `slug` (this repo's stable and edge
+channels each count as a separate add-on, or you can install the add-on from a
+second repository).
+
+Whichever way you run the second instance, give each meter a **distinct
+`device_name`**. The name is baked into every entity's `unique_id` and MQTT
+topic, so distinct names are what keep two meters from overwriting each other's
+discovery configs and readings. For example, leave the first meter at the default
+`Xcel Itron 5` and set the second to `Xcel Itron 5 Garage`.
+
+> `device_name` requires an upstream build that supports the `DEVICE_NAME`
+> environment variable. On older builds the option is simply ignored.
 
 ## Configuring Energy Dashboard
 
